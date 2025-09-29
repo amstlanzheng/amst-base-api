@@ -1,5 +1,8 @@
 package com.amst.api.common.exception;
 
+/**
+ * @author lanzhs
+ */
 public class ThrowUtils {
 
     /**

@@ -2,6 +2,9 @@ package com.amst.api.common.exception;
 
 import lombok.Getter;
 
+/**
+ * @author lanzhs
+ */
 @Getter
 public class BusinessException extends RuntimeException {
 

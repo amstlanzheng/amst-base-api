@@ -2,6 +2,9 @@ package com.amst.api.common.request;
 
 import lombok.Data;
 
+/**
+ * @author lanzhs
+ */
 @Data
 public class PageRequest {
 

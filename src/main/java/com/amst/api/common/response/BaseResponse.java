@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * @author lanzhs
+ */
 @Data
 public class BaseResponse<T> implements Serializable {
 

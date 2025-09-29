@@ -3,6 +3,10 @@ package com.amst.api.common.exception;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * @author lanzhs
+ */
+
 @Getter
 @AllArgsConstructor
 public enum ErrorCode {

@@ -2,6 +2,9 @@ package com.amst.api.common.response;
 
 import com.amst.api.common.exception.ErrorCode;
 
+/**
+ * @author lanzhs
+ */
 public class ResultUtils {
 
     /**
