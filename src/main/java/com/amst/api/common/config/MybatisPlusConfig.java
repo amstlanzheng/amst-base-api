@@ -1,4 +1,4 @@
-package com.amst.api.common.co؜nfig;
+package com.amst.api.common.config;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
