@@ -25,18 +25,7 @@ spring:
           max-idle: 10      # 连接池中的最大空闲连接
           min-idle: 5       # 连接池中的最小空闲连接
 
-mybatis-plus:
-  configuration:
-    map-underscore-to-camel-case: true
-    # 仅在开发环境开启日志
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  global-config:
-    db-config:
-      logic-delete-field: isDelete # 全局逻辑删除的实体字段名
-      logic-delete-value: 1 # 逻辑已删除值（默认为 1）
-      logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）
-  mapper-locations: classpath:mapper/*.xml  # mapper.xml存放路径
-  # type-aliases-package: com.amst.ai.agent.entity
+
 
 # 接口文档配置
 # springdoc-openapi项目配置
