@@ -38,7 +38,7 @@
 
 ### 1. 环境配置
 
-在运行项目之前，需要配置以下环境变量或修改[application.yml](file:///C:/project/java/amst-agent/amst-base-api/src/main/resources/application.yml)文件:
+在运行项目之前，需要配置以下环境变量或修改[application.yml](src/main/resources/application.yml)文件:
 
 ```bash
 MYSQL_HOST=localhost      # MySQL服务器地址
@@ -54,19 +54,27 @@ REDIS_PASSWORD=          # Redis密码(如果有的话)
 
 ### 2. 数据库初始化
 
-执行SQL脚本[src/main/resources/sql/schema.sql](file:///C:/project/java/amst-agent/amst-base-api/src/main/resources/sql/schema.sql)创建数据库表结构。
+执行SQL脚本[src/main/resources/sql/schema.sql](src/main/resources/sql/schema.sql)创建数据库表结构。
 
 ### 3. 项目启动
 
-使用Maven命令启动项目:
+1. 使用Maven命令启动项目:
 
 ```bash
 mvn clean install
 mvn spring-boot:run
 ```
 
-或者在IDE中直接运行[AmstBaseApiApplication.java](file:///C:/project/java/amst-agent/amst-base-api/src/main/java/com/amst/api/AmstBaseApiApplication.java)主类。
+2. 在IDE中直接运行[AmstBaseApiApplication.java](src/main/java/com/amst/api/AmstBaseApiApplication.java)主类。
 
+3. 线上部署启动
+    <1> 使用`mvn package`命令打jar包,
+    <2> 修改doc文件夹下[.env-example](doc/docker/.env-example)内容，并且重命名为.evn
+    <3> 将[Dockerfile](doc/docker/Dockerfile),[.env](doc/docker/.env)和jar包放在同一目录，执行
+   `docker rm -f amst-ai-app`
+   `docker build -t amst-ai-app .`  
+   `docker run -d --name amst-ai-app -p 8080:8080 --env-file .env amst-ai-app`
+    <4> 使用命令查看运行中的容器 `docker ps`
 ### 4. 访问接口
 
 项目启动后，可通过以下地址访问:
@@ -99,15 +107,15 @@ src/main/java/com/amst/api/
 
 ### 用户模块
 
-- 用户注册 [/api/user/register](file:///C:/project/java/amst-agent/amst-base-api/src/main/java/com/amst/api/controller/UserController.java#L42-L50)
-- 用户登录 [/api/user/login](file:///C:/project/java/amst-agent/amst-base-api/src/main/java/com/amst/api/controller/UserController.java#L57-L65)
-- 获取当前登录用户 [/api/user/get/login](file:///C:/project/java/amst-agent/amst-base-api/src/main/java/com/amst/api/controller/UserController.java#L72-L76)
-- 用户注销 [/api/user/logout](file:///C:/project/java/amst-agent/amst-base-api/src/main/java/com/amst/api/controller/UserController.java#L83-L89)
-- 创建用户 [/api/user/add](file:///C:/project/java/amst-agent/amst-base-api/src/main/java/com/amst/api/controller/UserController.java#L93-L105)
-- 获取用户信息 [/api/user/get](file:///C:/project/java/amst-agent/amst-base-api/src/main/java/com/amst/api/controller/UserController.java#L112-L120)
-- 删除用户 [/api/user/delete](file:///C:/project/java/amst-agent/amst-base-api/src/main/java/com/amst/api/controller/UserController.java#L145-L154)
-- 更新用户 [/api/user/update](file:///C:/project/java/amst-agent/amst-base-api/src/main/java/com/amst/api/controller/UserController.java#L160-L171)
-- 分页查询用户 [/api/user/list/page/vo](file:///C:/project/java/amst-agent/amst-base-api/src/main/java/com/amst/api/controller/UserController.java#L182-L195)
+- 用户注册 [/api/user/register](src/main/java/com/amst/api/controller/UserController.java)
+- 用户登录 [/api/user/login](src/main/java/com/amst/api/controller/UserController.java)
+- 获取当前登录用户 [/api/user/get/login](src/main/java/com/amst/api/controller/UserController.java)
+- 用户注销 [/api/user/logout](src/main/java/com/amst/api/controller/UserController.java)
+- 创建用户 [/api/user/add](src/main/java/com/amst/api/controller/UserController.java)
+- 获取用户信息 [/api/user/get](src/main/java/com/amst/api/controller/UserController.java)
+- 删除用户 [/api/user/delete](src/main/java/com/amst/api/controller/UserController.java)
+- 更新用户 [/api/user/update](src/main/java/com/amst/api/controller/UserController.java)
+- 分页查询用户 [/api/user/list/page/vo](src/main/java/com/amst/api/controller/UserController.java)
 
 ## 开发指南
 
@@ -120,10 +128,12 @@ src/main/java/com/amst/api/
 
 ### 权限控制
 
-通过[@AuthCheck](file:///C:/project/java/amst-agent/amst-base-api/src/main/java/com/amst/api/annotation/AuthCheck.java)注解实现接口级别的权限控制:
+通过[@AuthCheck](src/main/java/com/amst/api/annotation/AuthCheck.java)注解实现接口级别的权限控制:
 
 ```java
-@AuthCheck(mustRole = UserConstant.ADMIN_ROLE) // 仅管理员可访问
+ // 设置仅管理员可访问
+@AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+public BaseResponse<User> test(@RequestParam long id) {}
 ```
 
 ### 注意事项

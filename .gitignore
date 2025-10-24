@@ -19,7 +19,7 @@ target/
 *.iml
 *.ipr
 .starFactory
-
+.env
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
