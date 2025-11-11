@@ -69,7 +69,7 @@ mvn spring-boot:run
 
 3. 线上部署启动
     <1> 使用`mvn package`命令打jar包,
-    <2> 修改doc文件夹下[.env-example](doc/docker/.env-example)内容，并且重命名为.evn
+    <2> 修改根目录下[.env-example](doc/docker/.env-example)内容，并且重命名为.evn
     <3> 将[Dockerfile](doc/docker/Dockerfile),[.env](doc/docker/.env)和jar包放在同一目录，执行
    `docker rm -f amst-ai-app`
    `docker build -t amst-ai-app .`  
@@ -81,6 +81,7 @@ mvn spring-boot:run
 
 - API根路径: http://localhost:8866/api
 - API文档: http://localhost:8866/api/swagger-ui.html
+- 文档地址: http://localhost:8866/api/doc.html
 
 ## 项目结构
 
@@ -135,9 +136,9 @@ src/main/java/com/amst/api/
 @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
 public BaseResponse<User> test(@RequestParam long id) {}
 ```
-无权限注解: 该接口 可被所有用户访问
-@AuthCheck: 要至少普通用户访问
-@AuthCheck(mustRole = UserConstant.USER_ROLE): 只能被管理员用户访问
+- 无权限注解: 该接口 可被所有用户访问
+- @AuthCheck: 要至少普通用户访问
+- @AuthCheck(mustRole = UserConstant.USER_ROLE): 只能被管理员用户访问
 
 ### 注意事项
 
