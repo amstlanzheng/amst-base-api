@@ -29,4 +29,5 @@ CREATE TABLE `user`  (
                          INDEX `idx_user_name`(`user_name` ASC) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 335171106568318977 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户' ROW_FORMAT = Dynamic;
 
+-- 默认管理员 账号：admin 密码：33550336lh.
 INSERT INTO `user` VALUES (335159986445012992, 'admin', '701914cab1b3b34e6132f17623de8ebc', '无名客', NULL, NULL, 'admin', NULL, NULL, NULL, NULL, NULL, '2025-10-13 01:46:08', '2025-10-13 01:46:08', '2025-10-13 02:29:01', 0);

@@ -135,6 +135,9 @@ src/main/java/com/amst/api/
 @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
 public BaseResponse<User> test(@RequestParam long id) {}
 ```
+无权限注解: 该接口 可被所有用户访问
+@AuthCheck: 要至少普通用户访问
+@AuthCheck(mustRole = UserConstant.USER_ROLE): 只能被管理员用户访问
 
 ### 注意事项
 

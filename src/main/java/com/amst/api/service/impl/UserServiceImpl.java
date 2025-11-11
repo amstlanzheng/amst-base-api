@@ -125,7 +125,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>  implements U
         // 先判断是否已登录
         Object userObj = request.getSession().getAttribute(UserConstant.USER_LOGIN_STATE);
         if (userObj == null) {
-            throw new BusinessException(ErrorCode.OPERATION_ERROR, "未登录");
+            throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR, "未登录");
         }
         // 移除登录态
         request.getSession().removeAttribute(UserConstant.USER_LOGIN_STATE);
