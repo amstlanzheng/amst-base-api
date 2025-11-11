@@ -1,5 +1,8 @@
 package com.amst.api.common.constant;
 
+/**
+ * @author lanzhs
+ */
 public interface UserConstant {
 
     /**
@@ -23,5 +26,10 @@ public interface UserConstant {
      * 密码加密的盐
      */
     String SALT = "Icarus";
+
+    /**
+     * 默认密码
+     */
+    String DEFAULT_PASSWORD = "12345678";
 
 }

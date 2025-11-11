@@ -16,20 +16,14 @@ import com.amst.api.model.vo.UserVO;
 import com.amst.api.service.UserService;
 import com.mybatisflex.core.paginate.Page;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static com.amst.api.common.constant.UserConstant.DEFAULT_PASSWORD;
 
 /**
  * 用户 控制层。
@@ -86,6 +80,7 @@ public class UserController {
      */
     @GetMapping("/get/login")
     @Operation(summary = "获取当前登录用户", description = "获取当前登录用户信息")
+    @AuthCheck
     public BaseResponse<LoginUserVO> getLoginUser(HttpServletRequest request) {
         User loginUser = userService.getLoginUser(request);
         return ResultUtils.success(userService.getLoginUserVO(loginUser));
@@ -99,6 +94,7 @@ public class UserController {
      */
     @PostMapping("/logout")
     @Operation(summary = "用户注销", description = "用户注销接口")
+    @AuthCheck
     public BaseResponse<Boolean> userLogout(HttpServletRequest request) {
         ThrowUtils.throwIf(request == null, ErrorCode.PARAMS_ERROR);
         boolean result = userService.userLogout(request);
@@ -115,7 +111,6 @@ public class UserController {
         User user = new User();
         BeanUtil.copyProperties(userAddRequest, user);
         // 默认密码 12345678
-        final String DEFAULT_PASSWORD = "12345678";
         String encryptPassword = userService.getEncryptPassword(DEFAULT_PASSWORD);
         user.setUserPassword(encryptPassword);
         user.setUserRole(UserConstant.DEFAULT_ROLE);
@@ -142,6 +137,7 @@ public class UserController {
      */
     @GetMapping("/get/vo")
     @Operation(summary = "根据 id 获取包装脱敏后的信息", description = "根据 id 获取包装类接口")
+    @AuthCheck
     public BaseResponse<UserVO> getUserVOById(long id) {
         BaseResponse<User> response = getUserById(id);
         User user = response.getData();
