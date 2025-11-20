@@ -47,6 +47,7 @@ public class CodeGenerator {
                                 new Column("update_time", FieldFill.INSERT_UPDATE)
                         )
                         .enableLombok()
+                        .logicDeleteColumnName("is_delete") // 逻辑删除字段
                 )
                 .templateEngine(new FreemarkerTemplateEngine())
                 .execute();
