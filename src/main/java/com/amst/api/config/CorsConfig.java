@@ -1,4 +1,4 @@
-package com.amst.api.common.config;
+package com.amst.api.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

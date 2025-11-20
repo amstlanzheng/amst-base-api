@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * 公共字段，自动填充值
  *
- * @author 能力开放产品线基础框架
+ * @author lanzhs
  */
 @Component
 public class FieldMetaObjectHandler implements MetaObjectHandler {

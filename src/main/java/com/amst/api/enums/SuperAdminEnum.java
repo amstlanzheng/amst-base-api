@@ -1,9 +1,9 @@
-
-
-package com.amst.api.common.enums;
+package com.amst.api.enums;
 
 /**
  * 超级管理员枚举
+ *
+ * @author lanzhs
  */
 @SuppressWarnings("all")
 public enum SuperAdminEnum {

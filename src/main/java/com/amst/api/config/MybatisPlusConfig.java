@@ -1,4 +1,4 @@
-package com.amst.api.common.config;
+package com.amst.api.config;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
@@ -7,9 +7,19 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * MyBatis Plus 配置
+ *
+ * @author lanzhs
+ */
 @Configuration
 public class MybatisPlusConfig {
 
+    /**
+     * 拦截器配置
+     *
+     * @return
+     */
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
