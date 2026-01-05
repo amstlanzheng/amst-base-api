@@ -36,17 +36,6 @@ public class User implements Serializable {
     @Schema(description = "用户密码")
     private String userPassword;
 
-    /**
-     * 开放平台id
-     */
-    @Schema(description = "开放平台ID")
-    private String unionId;
-
-    /**
-     * 公众号openId
-     */
-    @Schema(description = "公众号OpenID")
-    private String mpOpenId;
 
     /**
      * 用户昵称
